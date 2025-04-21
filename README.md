@@ -64,7 +64,7 @@ ___
 
 2. Cada cliente é aberto em uma janela separada.
 
-3. O botão `Enviar/Atualizar` voltou a ser exibido como `Enviar/Atualizar`, pois não é mais necessário usar o artifício de pressioná-lo sem a digitação de uma mensagem para atualizar a conversa.
+3. O botão `Enviar/Atualizar` voltou a ser exibido como `Enviar`, pois não é mais necessário usar o artifício de pressioná-lo sem a digitação de uma mensagem para atualizar a conversa.
 
 4. Ajuste na arquitetura: `routes.py` foi movido para a pasta `app` (boas práticas)
 
