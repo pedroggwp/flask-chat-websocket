@@ -3,6 +3,7 @@
 <head>
     <title>{% block titulo %}{% endblock %}</title>
     <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <h1>{% block cabecalho %}{% endblock %}</h1>
@@ -10,8 +11,10 @@
     {% block formulario %}
     <form method="POST" onsubmit="return validarFormulario(this)">
       <input type="text" name="mensagem" id="campoMensagem" placeholder="Digite sua mensagem">
-      <button type="submit" name="enviar" onclick="setRequisito(true)">Enviar</button>
-      <button type="submit" name="encerrar" onclick="setRequisito(false)">Encerrar Sessão</button>
+      <div class="button-group">
+        <button type="submit" name="enviar" onclick="setRequisito(true)">Enviar</button>
+        <button type="submit" name="encerrar" onclick="setRequisito(false)">Encerrar Sessão</button>
+      </div>
     </form>
     
     <script>
@@ -28,9 +31,9 @@
     <h2>Janela do Chat</h2>
     {% block chat %}
     <pre id="historico">
-{% for linha in historico %}
-{{ linha|safe }}
-{% endfor %}
+      {% for linha in historico %}
+      {{ linha|safe }}
+      {% endfor %}
     </pre>
     {% endblock %}
 
@@ -47,6 +50,25 @@
             const novaLinha = `<font color="${cor}">${texto}</font>\n`;
             historico.innerHTML = novaLinha + historico.innerHTML;
         });
+    </script>
+
+    <script>
+      const campo = document.getElementById("campoMensagem");
+
+      // Garante foco ao carregar a página
+      window.onload = () => campo.focus();
+
+      // Garante foco de volta após envio de mensagem (pequeno atraso)
+      document.getElementById("formulario").addEventListener("submit", () => {
+        setTimeout(() => campo.focus(), 100);
+      });
+
+      // Também volta ao foco após clique nos botões
+      document.querySelectorAll("button").forEach(btn => {
+        btn.addEventListener("click", () => {
+          setTimeout(() => campo.focus(), 100);
+        });
+      });
     </script>
 </body>
 </html>

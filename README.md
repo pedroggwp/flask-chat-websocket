@@ -27,16 +27,26 @@ Esta aplicação consiste em dois clientes de chat: usuario e atendente e cada c
     * Abra um terminal no VSCode e execute:
     * `python.exe -m venv .venv`
     * `.venv\Scripts\Activate`
-    * Isso ativa o ambiente virtual e o prompt deverá mudar, passando a mostrar `(.venv)` no início da linha. Digite:
+    * Isso ativa o ambiente virtual e o prompt deverá mudar, passando a mostrar `(.venv)` no início da linha. Atualize o `pip`:
         * `python.exe -m pip install --upgrade pip`
-        * `pip install flask python-dotenv`
+
+        Instale os requisitos:
+        * `pip install -r requirements.txt`
         
         Agora você pode executar a aplicação:
         * `flask run`
 
+        Acesse a aplicação em: 
+        * http://127.0.0.1:5000/
+        * (ou http://localhost:5000/)
+
 ## Quando usar nas próximas vezes, digite:
-* `.venv\Scripts\Activate`
-* `flask run`
+    * `.venv\Scripts\Activate`
+    * `flask run`
+
+    Acesse a aplicação:
+    * http://127.0.0.1:5000/
+    * (ou http://localhost:5000/)
 
 ___
 
@@ -69,5 +79,6 @@ ___
 
 4. Ajuste na arquitetura: `routes.py` foi movido para a pasta `app` (boas práticas)
 
-### Requisito adicional: 
-`flask_socketio` (instale usando `pip install`)
+5. Uso de CSS.
+
+6. Arquivo `requirements.txt`, para melhor organização. Foram atualizadas as instruções para instalação inicial da aplicação (Veja o item *Na primeira vez que usar este pacote*, acima).
