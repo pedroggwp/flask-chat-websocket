@@ -48,14 +48,19 @@ Para implementar a comunicação em tempo real, devem ser usadas técnicas de pr
 
 ___
 
-## ramificação 'realtime' - atualização em tempo real
+## ramificação 'realtime' - sessões de chat e atualização em tempo real
 **Major update!**
 1. Chat atualizado em tempo real nos dois clientes, com a introdução de:
 - Recursos de programação assíncrona
     * JavaScript
     * WebSockets
 - ID de sessão de chat
-- Logs de chat por sessão (a versão sync mantinha um log unificado "eterno")
+- Logs de chat por sessão
+    * A versão `sync` mantinha um log unificado "eterno" na pasta `flask_chat/logs`
+    * A partir desta versão, os logs de cada sessão têm a marcação de data/hora do início da sessão no nome do arquivo.
+    * Nomenclatura: `chat_YYYYMMDD-hhmmss.log`
+        * YYYY - ano; MM - mês; DD - dia
+        * hh - hora; mm - minuto; ss - segundo
 
 2. Cada cliente é aberto em uma janela separada.
 
