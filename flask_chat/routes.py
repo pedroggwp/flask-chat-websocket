@@ -6,7 +6,7 @@ bp = Blueprint("chat", __name__)
 
 def registrar_log(rota, mensagem):
     os.makedirs("logs", exist_ok=True)
-    caminho = f"logs/{rota}.log"
+    caminho = f"logs/chat.log"
     mensagem = mensagem.strip()
     if mensagem:
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -14,8 +14,8 @@ def registrar_log(rota, mensagem):
         with open(caminho, "a") as f:
             f.write(f"[{timestamp}] [{origem}] {mensagem}\n")
 
-def carregar_historico(rota):
-    caminho = f"logs/{rota}.log"
+def carregar_historico(_):
+    caminho = f"logs/chat.log"
     linhas_coloridas = []
     if os.path.exists(caminho):
         with open(caminho, "r") as f:
