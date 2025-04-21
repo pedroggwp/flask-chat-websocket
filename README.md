@@ -12,7 +12,7 @@ ___
 ## Aplicação inicial
 O objetivo desta versão é apresentar o framework Flask.
 
-Esta aplicação consiste em dois clientes de chat: usuario e atendente e cada cliente um mantém seu próprio log de conversa (usuario.log e atendente.log, respectivamente). No entanto, ainda não se conversam de fato.
+Esta aplicação consiste em dois clientes de chat: usuario e atendente e cada cliente um mantém seu próprio log de conversa (`usuario.log` e `atendente.log`, respectivamente). No entanto, ainda não se conversam de fato.
 
 ### Recursos:
 * Framework Flask: `flask`
