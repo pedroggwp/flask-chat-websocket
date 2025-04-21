@@ -30,6 +30,7 @@ Esta aplicação consiste em dois clientes de chat: usuario e atendente e cada c
     * Isso ativa o ambiente virtual e o prompt deverá mudar, passando a mostrar `(.venv)` no início da linha. Digite:
         * `python.exe -m pip install --upgrade pip`
         * `pip install flask python-dotenv`
+        
         Agora você pode executar a aplicação:
         * `flask run`
 
