@@ -40,7 +40,7 @@ Esta aplicação consiste em dois clientes de chat: usuario e atendente e cada c
 ___
 
 ## ramificação 'sync' - arquivo de log unificado
-A partir desta versão, os clientes (usuario e atendente) conversam um com o outro, por meio do log de conversa unificado (arquivo chat.log). No entanto, a conversa ainda não acontece em tempo real.
+A partir desta versão, os clientes (usuario e atendente) conversam um com o outro, por meio do log de conversa unificado (arquivo `chat.log`). No entanto, a conversa ainda não acontece em tempo real.
 
 O botão `Enviar` foi modificado para `Enviar/Atualizar`: ao ser pressionado sem a digitação de uma mensagem, fará a atualização da conversa. Quando houver alguma coisa digitada na caixa de texto, a mensagem será enviada.
 
