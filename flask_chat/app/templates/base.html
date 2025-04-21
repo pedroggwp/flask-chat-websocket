@@ -2,22 +2,51 @@
 <html>
 <head>
     <title>{% block titulo %}{% endblock %}</title>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
 </head>
 <body>
     <h1>{% block cabecalho %}{% endblock %}</h1>
 
-    <form method="POST">
-        <label for="mensagem">Digite sua mensagem:</label><br>
-        <input type="text" id="mensagem" name="mensagem"><br><br>
-        <input type="submit" name="enviar" value="Enviar/Atualizar">
-        <input type="submit" name="encerrar" value="Encerrar Conversa">
+    {% block formulario %}
+    <form method="POST" onsubmit="return validarFormulario(this)">
+      <input type="text" name="mensagem" id="campoMensagem" placeholder="Digite sua mensagem">
+      <button type="submit" name="enviar" onclick="setRequisito(true)">Enviar</button>
+      <button type="submit" name="encerrar" onclick="setRequisito(false)">Encerrar Sessão</button>
     </form>
+    
+    <script>
+      function setRequisito(ativo) {
+        document.getElementById("campoMensagem").required = ativo;
+      }
+    
+      function validarFormulario(form) {
+        return true;
+      }
+    </script>
+    {% endblock %}
 
     <h2>Janela do Chat</h2>
-    <pre>
+    {% block chat %}
+    <pre id="historico">
 {% for linha in historico %}
 {{ linha|safe }}
 {% endfor %}
     </pre>
+    {% endblock %}
+
+    <script>
+        const socket = io();
+
+        socket.on("nova_mensagem", data => {
+            const historico = document.getElementById("historico");
+            const texto = data.html;
+            let cor = "black";
+            if (texto.includes("[USUÁRIO]")) cor = "red";
+            if (texto.includes("[ATENDENTE]")) cor = "blue";
+            
+            const novaLinha = `<font color="${cor}">${texto}</font>\n`;
+            historico.innerHTML = novaLinha + historico.innerHTML;
+        });
+    </script>
 </body>
 </html>

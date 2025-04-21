@@ -1,5 +1,6 @@
 # TECH_flask_chat
 Flask App as an educational lab for AI and IoT.
+
 Aplicação Flask como laboratório didático para IA e IoT.
 
 With many thanks to Miguel Grinberg (https://github.com/miguelgrinberg) for his Flask Mega-Tutorial (https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
@@ -45,3 +46,22 @@ O botão `Enviar` foi modificado para `Enviar/Atualizar`: ao ser pressionado sem
 
 Para implementar a comunicação em tempo real, devem ser usadas técnicas de programação assíncrona.
 
+___
+
+## ramificação 'realtime' - atualização em tempo real
+**Major update!**
+1. Chat atualizado em tempo real nos dois clientes, com a introdução de:
+- Recursos de programação assíncrona
+    * JavaScript
+    * WebSockets
+- ID de sessão de chat
+- Logs de chat por sessão (a versão sync mantinha um log unificado "eterno")
+
+2. Cada cliente é aberto em uma janela separada.
+
+3. O botão `Enviar/Atualizar` voltou a ser exibido como `Enviar/Atualizar`, pois não é mais necessário usar o artifício de pressioná-lo sem a digitação de uma mensagem para atualizar a conversa.
+
+4. Ajuste na arquitetura: `routes.py` foi movido para a pasta `app` (boas práticas)
+
+### Requisito adicional: 
+`flask_socketio` (instale usando `pip install`)

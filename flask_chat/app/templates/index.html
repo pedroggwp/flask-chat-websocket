@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Página Inicial</title>
+  <meta charset="utf-8">
+  <title>Central de Chat</title>
 </head>
 <body>
-    <h1>Bem-vindo ao Sistema de Chat</h1>
-    <form action="/usuario" target="_blank" method="get">
-        <input type="submit" value="Abrir como Usuário">
-    </form>
-    <br>
-    <form action="/atendente" target="_blank" method="get">
-        <input type="submit" value="Abrir como Atendente">
-    </form>
+  <h1>Simulador de Chat</h1>
+
+  <button onclick="abrirJanela('usuario')">Abrir Usuário (nova janela)</button>
+  <button onclick="abrirJanela('atendente')">Abrir Atendente (nova janela)</button>
+
+  <script>
+    function abrirJanela(papel) {
+      window.open(
+        '/' + papel,                     // URL
+        papel + '_janela',               // nome da janela
+        'width=500,height=700,resizable=yes,scrollbars=yes' // opções
+      );
+    }
+  </script>
 </body>
 </html>
