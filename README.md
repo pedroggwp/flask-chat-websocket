@@ -33,18 +33,19 @@ Esta aplicação consiste em dois clientes de chat: usuario e atendente e cada c
         Instale os requisitos:
         * `pip install -r requirements.txt`
         
-        Agora você pode executar a aplicação:
+        Agora você pode executar a aplicação digitando:
         * `flask run`
-
+        
         Acesse a aplicação em: 
         * http://127.0.0.1:5000/
         * (ou http://localhost:5000/)
 
-## Quando usar nas próximas vezes, digite:
+## Quando usar nas próximas vezes
+    Basta digitar:
     * `.venv\Scripts\Activate`
     * `flask run`
 
-    Acesse a aplicação:
+    E acessar a aplicação:
     * http://127.0.0.1:5000/
     * (ou http://localhost:5000/)
 
@@ -70,10 +71,10 @@ ___
     * A versão `sync` mantinha um log unificado "eterno" na pasta `flask_chat/logs`
     * A partir desta versão, os logs de cada sessão têm a marcação de data/hora do início da sessão no nome do arquivo.
     * Nomenclatura: `chat_YYYYMMDD-hhmmss.log`
-        * YYYY - ano; MM - mês; DD - dia
-        * hh - hora; mm - minuto; ss - segundo
+        * `YYYY` - ano; `MM` - mês; `DD` - dia
+        * `hh` - hora; `mm` - minuto; `ss` - segundo
 
-2. Cada cliente é aberto em uma janela separada.
+2. Cada cliente é aberto em uma janela separada, em vez de guias do navegador.
 
 3. O botão `Enviar/Atualizar` voltou a ser exibido como `Enviar`, pois não é mais necessário usar o artifício de pressioná-lo sem a digitação de uma mensagem para atualizar a conversa.
 
@@ -82,3 +83,13 @@ ___
 5. Uso de CSS.
 
 6. Arquivo `requirements.txt`, para melhor organização. Foram atualizadas as instruções para instalação inicial da aplicação (Veja o item *Na primeira vez que usar este pacote*, acima).
+
+___
+
+## ramificação 'gemini' - as perguntas são respondidas pelo Gemini via API
+
+1. Rotina de consulta à API do Gemini (com chave obtida previamente) para obter respostas.
+
+2. Cada mensagem do usuário que termina com '?' é utilizada como prompt para gerar uma resposta do modelo "gemini-2.0-flash" via API do Gemini.
+
+3. A resposta é inserida no log do chat com a indicação [GEMINI]

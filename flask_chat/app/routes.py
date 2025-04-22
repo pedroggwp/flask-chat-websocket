@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, session
 from datetime import datetime
 from app import socketio
 import os
-import uuid
+from app.gemini.modelo import responder_pergunta
 
 bp = Blueprint("chat", __name__)
 
@@ -12,7 +12,7 @@ def registrar_log(origem, mensagem, chat_id):
     mensagem = mensagem.strip()
     if mensagem:
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        with open(caminho, "a") as f:
+        with open(caminho, "a", encoding="utf-8") as f:
             f.write(f"[{timestamp}] [{origem}] {mensagem}\n")
         html = f"[{timestamp}] [{origem}] {mensagem}"
         socketio.emit("nova_mensagem", {"html": html})
@@ -22,8 +22,8 @@ def carregar_historico():
     caminho = f"logs/chat_{chat_id}.log"
     linhas_coloridas = []
     if os.path.exists(caminho):
-        with open(caminho, "r") as f:
-            linhas = list(reversed(f.readlines()))
+        with open(caminho, "r", encoding="utf-8") as f:
+            linhas = list(f.readlines())
             for linha in linhas:
                 if "[USUÁRIO]" in linha:
                     cor = "red"
@@ -48,6 +48,11 @@ def usuario():
         if "enviar" in request.form:
             msg = request.form["mensagem"]
             registrar_log("USUÁRIO", msg, session["chat_id"])
+
+            # Se for uma pergunta, consulta o Gemini
+            if msg.strip().endswith("?"):
+                resposta = responder_pergunta(msg)
+                registrar_log("GEMINI", resposta, session["chat_id"])
         elif "encerrar" in request.form:
             registrar_log("SISTEMA", f"=== Fim da Sessão {session['chat_id']} ===", session["chat_id"])
             session.pop("chat_id", None)
