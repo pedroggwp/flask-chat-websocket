@@ -71,6 +71,7 @@ Colocar arquivos .txt em app/gemini/docs/
 http://localhost:5000
 
 ## 🗂️ Estrutura de Arquivos
+   ```bash
 app/
 ├── gemini/               # Integração com Google Gemini
 │   ├── docs/             # Documentos de contexto
