@@ -1,19 +1,14 @@
-import google.generativeai as genai
+from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 import os
 
-# Carrega a variável de ambiente do arquivo .env (se você estiver usando .env)
+# Carrega variáveis do .env
 load_dotenv()
+api_key = os.getenv("GEMINI_API_KEY")
 
-# Configura a API key
-chave_api = os.getenv("GEMINI_API_KEY")
-
-genai.configure(api_key = chave_api)
-
-# Inicia o modelo
-model = genai.GenerativeModel("gemini-2.0-flash")
-
-# rotina para enviar pergunta ao modelo
-def responder_pergunta(pergunta: str) -> str:
-    resposta = model.generate_content(pergunta)
-    return resposta.text.strip()
+# Instancia o modelo
+model = ChatGoogleGenerativeAI(
+    model="gemini-2.0-flash",
+    temperature=0.5,
+    google_api_key=api_key
+)

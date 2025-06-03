@@ -5,5 +5,5 @@ app = Flask(__name__)
 app.secret_key = "supersecretkey"
 socketio = SocketIO(app)
 
-from app.routes import bp
+from app.routes.chat_routes import bp
 app.register_blueprint(bp)
